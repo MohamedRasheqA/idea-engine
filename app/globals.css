@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #805ad5;
+  --primary-hover: #6b46c1;
+  --primary-foreground: #ffffff;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --border: #e5e5e5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #9f7aea;
+    --primary-hover: #b794f4;
+    --primary-foreground: #ffffff;
+    --muted: #1a1a1a;
+    --muted-foreground: #a3a3a3;
+    --border: #262626;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Chat specific styles */
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: var(--primary);
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: var(--primary);
+}
+
+.chat-message {
+  max-width: 85%;
+  word-break: break-word;
+}
+
+.chat-message p {
+  margin-bottom: 0.5rem;
+}
+
+.chat-message p:last-child {
+  margin-bottom: 0;
+}
+
+.chat-message pre {
+  background: var(--muted);
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+.chat-message code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.875rem;
+}
+
+.chat-message ul,
+.chat-message ol {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.chat-message ul {
+  list-style-type: disc;
+}
+
+.chat-message ol {
+  list-style-type: decimal;
+}
+
+@media (max-width: 640px) {
+  .chat-message {
+    max-width: 90%;
+  }
+}
+
+/* Modal styles */
+.modal-backdrop {
+  background-color: rgba(var(--foreground-rgb), 0.3);
+  backdrop-filter: blur(4px);
+}
+
+@supports not (backdrop-filter: blur(4px)) {
+  .modal-backdrop {
+    background-color: rgba(var(--foreground-rgb), 0.7);
+  }
+}
+
